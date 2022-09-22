@@ -9,6 +9,7 @@ from PIL import Image, ImageTk
 from plyer import notification
 import plyer.platforms.win.notification
 
+# 通过requests.get提交表单
 def login(usename, password, operator):
     usename = usename
     password = password
@@ -28,8 +29,7 @@ def login(usename, password, operator):
     response = requests.post(url="http://10.255.255.34/api/v1/login", data=date, headers=headers)
     return loads(response.text)
 
-
-
+# 初始化数据库
 def initialization(icon1):
     try:
         with open('C:\\usr_info.pickle', 'rb') as usr_file:
@@ -51,8 +51,7 @@ def initialization(icon1):
                 title=operat,
                 message=name + '：已成功登录',
                 app_icon=icon1,
-                timeout=2
-            )
+                timeout=2)
 
     else:
         name = ''
@@ -60,7 +59,7 @@ def initialization(icon1):
         operator = 1
     return name, password, operator,win_execute
 
-
+# 建立可视化窗口
 def window(name, password, operator):
     # 窗口
     window = tk.Tk()
